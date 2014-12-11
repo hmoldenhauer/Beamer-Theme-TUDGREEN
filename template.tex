@@ -24,7 +24,19 @@
 % Not working in current siunitx version
 %\sisetup{per = frac, fraction = sfrac, exponent-product = \cdot, detect-all}
 % Beamer Thema
-\usetheme{tudtheme}
+\usepackage{theme/beamerthemetudtheme}
+% bibliography
+\usepackage[
+	maxnames=8,		% maximal 8 authors cited
+	minnames=3,		% minimal 3 authors cited
+	maxalphanames=1,	% only first author in label
+	style=alphabetic,	% alphabetic style
+]{biblatex}
+\renewcommand*{\labelalphaothers}{}		% rm + sign after citation
+						% for multiple authors
+\renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}	% last name in small caps
+
+\addbibresource{lit.bib}
 % Setze Metainformationen
 \title{TITLE}
 \subtitle{SUBTITLE}
@@ -75,5 +87,9 @@
 
 \beginbackup
 \section*{Backup}
+\begin{frame}[allowframebreaks]{Literatur}
+	\nocite{*}
+	\printbibliography
+\end{frame}
 \backupend
 \end{document}
