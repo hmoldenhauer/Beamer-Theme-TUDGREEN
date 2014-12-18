@@ -1,95 +1,20 @@
 \documentclass[10pt]{beamer}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{epsfig}
-\usepackage{graphicx}
-\usepackage[]{subfig}
-\usepackage{caption}
-\captionsetup[subfigure]{labelformat=empty}
-\captionsetup[figure]{labelformat=empty}
-\captionsetup[table]{labelformat=empty}
-\usepackage{amsmath}
-\usepackage[fixamsmath,disallowspaces]{mathtools}
-\usepackage{fixmath}
-\usepackage[all,warning]{onlyamsmath}
-\usepackage{icomma}
-\usepackage{amscd}
-\usepackage{amstext}
-\usepackage{longtable}
-\usepackage{xfrac}
-\usepackage{upgreek}
-\usepackage{siunitx}
-% Not working in current siunitx version
-%\sisetup{per = frac, fraction = sfrac, exponent-product = \cdot, detect-all}
-% Beamer Thema
-\usepackage{theme/beamerthemetudtheme}
-% bibliography
-\usepackage[
-	maxnames=8,		% maximal 8 authors cited
-	minnames=3,		% minimal 3 authors cited
-	maxalphanames=1,	% only first author in label
-	style=alphabetic,	% alphabetic style
-]{biblatex}
-\renewcommand*{\labelalphaothers}{}		% rm + sign after citation
-						% for multiple authors
-\renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}	% last name in small caps
 
-\addbibresource{lit.bib}
-% Setze Metainformationen
+\input{tex/header.tex}
+
+% title, subtitle, author and institute
 \title{TITLE}
 \subtitle{SUBTITLE}
 \author[NAME]{NAME}
 \institute[]{Technische Universität Dortmund}
-% % % Backupfolien nicht zählen 
-
-\newcommand{\beginbackup}{
-   \newcounter{framenumbervorappendix}
-   \setcounter{framenumbervorappendix}{\value{framenumber}}
-}
-\newcommand{\backupend}{
-   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
-   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
-}
-
-%\logo{\includegraphics[scale=0.3]{./e4/e4logo}}
-%
-%
-% Datum auf den richtigen Tag ändern
-%
-%
 \date[\today]{\today}
 
 \begin{document}
-% % % % % % % % % % % % %
-%
-% Allgemeine Anmerkungen:
-%
-% 
-% 
-% 
-%
-% % % % % % % % % % % % % 
 
-
-\begin{frame}[c,fragile,label=title,plain]
-	\titlepage
-\end{frame}
-
-\begin{frame}[c,fragile,label=toc]{Inhalt}
-	\tableofcontents
-\end{frame}
-
-\section{SECTION}
-\begin{frame}[c,fragile]{FRAMETITLE}
-\end{frame}
+\input{content/title.tex}
+\input{content/motivation.tex}
 
 \beginbackup
-\section*{Backup}
-\begin{frame}[allowframebreaks]{Literatur}
-	\nocite{*}
-	\printbibliography
-\end{frame}
+\input{content/backup.tex}
 \backupend
 \end{document}

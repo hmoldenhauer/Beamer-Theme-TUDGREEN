@@ -1,0 +1,84 @@
+% fix LaTeX2e
+\usepackage{fixltx2e}
+
+% set language
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+% math tools
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% font packages
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+\usepackage[
+	math-style=ISO,
+	bold-style=ISO,
+	sans-style=italic,
+	nabla=upright,
+	partial=upright,
+]{unicode-math}
+
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr, \mathbfscr}]{XITS Math}
+
+% correct quotes
+\usepackage[autostyle]{csquotes}
+
+% numbers and units
+\usepackage[
+	locale=DE,			% locale selection
+	separate-uncertainty=true,	% errors with \pm
+	per-mode=symbol-or-fraction,	% m/s in text, fractions elsewise
+]{siunitx}
+
+% nice fractions in text
+\usepackage{xfrac}
+
+% nice captions
+\usepackage[
+	labelfont=bf,		% bold captions
+	font=small,		% smaller font as in document
+	width=0.9\textwidth,	% reduce maximal caption width
+]{caption}
+
+% use graphics in document
+\usepackage{graphicx}
+
+% nice tables
+\usepackage{booktabs}
+
+% beamer theme
+\usepackage{theme/beamerthemetudtheme}
+
+% bibliography
+\usepackage[
+	maxnames=8,		% maximal 8 authors cited
+	minnames=3,		% minimal 3 authors cited
+	maxalphanames=1,	% only first author in label
+	style=alphabetic,	% alphabetic style
+]{biblatex}
+\renewcommand*{\labelalphaothers}{}		% rm + sign after citation
+						% for multiple authors
+\renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}	% last name in small caps
+
+\addbibresource{tex/lit.bib}
+
+% do not count backup slides
+\newcommand{\beginbackup}{
+   \newcounter{framenumbervorappendix}
+   \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+}
+
+% hyperlinks in document
+\usepackage{hyperref}
+
+% bookmarks in pdf
+\usepackage{bookmark}
